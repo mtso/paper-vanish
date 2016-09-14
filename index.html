@@ -7,12 +7,20 @@
 
     <style>
     body {
-      background: #0aa;
+      background: #234;
+    }
+    canvas {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
     </style>
   </head>
+  
   <body>
     <canvas id="myCanvas" resize></canvas>
+    <button id="button" onclick="vanish()">Vanish</button>
     <img id="cover" src="img/piece-cover.png" style="visibility: hidden;">
   </body>
 </html>
