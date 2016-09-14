@@ -1,9 +1,13 @@
 <!doctype html>
 <html>
   <head>
-    <script type="text/javascript" src="js/paper-core.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/paper-core.min.js"></script>
+    <script type="text/javascript" src="https://raw.githubusercontent.com/soulwire/sketch.js/master/js/sketch.min.js"></script>
+    
+
+    <script type="text/javascript" src="js/particles.js"></script>
+    <script type="text/javascript" src="js/vanish.js"></script>
 
     <style>
     body {
@@ -15,12 +19,29 @@
       left: 50%;
       transform: translate(-50%, -50%);
     }
+    button {
+      z-index: 100000;
+      width: 200px;
+      height: 200px;
+    }
+    #container {
+      width: 600;
+      height: 600;
+
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
     </style>
   </head>
   
   <body>
+    <div id="container"></div>
+
     <canvas id="myCanvas" resize></canvas>
     <button id="button" onclick="vanish()">Vanish</button>
     <img id="cover" src="img/piece-cover.png" style="visibility: hidden;">
+
   </body>
 </html>

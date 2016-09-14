@@ -6,6 +6,8 @@ var timeElapsed = 0;
 
 $( document ).ready(function() {
   
+  // loadParticles();
+
   var canvas = document.getElementById('myCanvas');
   paper.setup(canvas);
   paper.view.viewSize = new paper.Size(300, 300);
@@ -23,6 +25,17 @@ $( document ).ready(function() {
 
 
   vanish = function() {
+    loadParticles();
+
+    // var sx = $(window).width() / 2;
+    // var sy = $(window).scrollTop() + $(window).height() / 2;
+    // demo.spawn( sx, sy );
+    // for ( i = 0; i < 20; i++ ) {
+    //     x = ( demo.width * 0.5 ) + random( -100, 100 );
+    //     y = ( demo.height * 0.5 ) + random( -100, 100 );
+    //     demo.spawn( x, y );
+    // }
+
 
     while (circles.length > 0) {
       circles.pop();
@@ -55,7 +68,7 @@ $( document ).ready(function() {
     if (!begin) { return; }
 
     timeElapsed += event.delta;
-    if (timeElapsed > duration) {
+    if (timeElapsed > 5) {// duration) {
       begin = false;
 
       var viewRect = new paper.Path.Rectangle(new paper.Point(0, 0), paper.view.size);
@@ -84,7 +97,6 @@ $( document ).ready(function() {
       paper.view.draw();
     }
   }
-
 
 });
 
