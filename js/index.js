@@ -3,34 +3,33 @@ $( document ).ready(function() {
   var canvas = document.getElementById('myCanvas');
   paper.setup(canvas);
 
-  paper.view.viewSize = new paper.Size(600, 600);
+  paper.view.viewSize = new paper.Size(300, 300);
 
   var raster = new paper.Raster('cover');
-  raster.position = new paper.Point(150, 150);
-  raster.scale(0.5);
-
-  var circle = new paper.Path.Circle(new paper.Point(200, 200), 50);
+  raster.position = paper.view.center;// new paper.Point(150, 150);
+  // raster.scale(0.5);
 
 
-  var small = new paper.Path.Circle(new paper.Point(170, 170), 40);
+  const particles = 10;
+  var circles = new paper.Path.Circle();
 
-  var moon = circle.unite(small);
+  for (var i = 0; i < particles; i++) {
+    var x = Math.random() * paper.view.size.width | 0;
+    var y = Math.random() * paper.view.size.height | 0;
 
-  var rect = new paper.Path.Rectangle(new paper.Point(0, 0), paper.view.size);
-  // rect.fillColor = 'white';
+    var newCircle = new paper.Path.Circle(new paper.Point(x, y), 30);
+    circles = circles.unite(newCircle);
+  }
 
-  var mask = rect.subtract(moon);
-  mask.fillColor = 'white';
+
+  var viewRect = new paper.Path.Rectangle(new paper.Point(0, 0), paper.view.size);
+  var mask = viewRect.subtract(circles);
+  // mask.fillColor = 'white';
 
   var group = new paper.Group({
     children: [mask, raster],
     clipped: true
   });
-
-
-  // circle.subtract(small);
-
-  // raster.subtract(circle);
 
   paper.view.draw();
 
